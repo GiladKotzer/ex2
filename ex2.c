@@ -1,58 +1,96 @@
 /******************
-Name:
-ID:
+Name: Gilad Kotzer
+ID: 331753509
 Assignment: ex2
 *******************/
 
 #include <stdio.h>
+int main(){
+	int isFinish = 0;
+	do{
+		printf("Choose an option:\
+			\n\t1. Happy Face\
+			\n\t2. Balanced Number\
+			\n\t3. Generous Number\
+			\n\t4. Circle Of Joy\
+			\n\t5. Happy Numbers\
+			\n\t6. Festival Of Laughter\
+			\n\t7. Exit\n");
 
-int main() {
-	// Case 1: Draw Happy Face with given symbols for eyes, nose and mouse
-	/* Example:
-	* n = 3:
-	* 0   0
-	*   o
-	* \___/
-	*/
-    
+		int option;
+		scanf("%d", &option);
 
-	// Case 2: determine whether the sum of all digits to the left of the middle digit(s)
-	// and the sum of all digits to the right of the middle digit(s) are equal
-	/* Examples:
-	Balanced: 1533, 450810, 99
-	Not blanced: 1552, 34
-	Please notice: the number has to be bigger than 0.
-	*/
+		switch(option){
+			case 1:
+				char eyesSymbol, noseSymbol, mouseSymbol;
+				printf("Enter symbols for the eyes, nose, and mouse:\n");
+				scanf(" %c %c %c", &eyesSymbol, &noseSymbol, &mouseSymbol);
+				int faceSize;
+				printf("Enter the size of the face:\n");
+				scanf("%d", &faceSize);
+				while(!(faceSize > 0 && faceSize % 2 == 1)){
+					printf("The face's size must be an odd and positive number, please try again:\n");
+					scanf("%d", &faceSize);
+				}
+				printf("%c", eyesSymbol);
+				for(int i = 0; i < faceSize; i++){
+					printf(" ");
+				}
+				printf("%c\n", eyesSymbol);
 
-	// Case 3: determine whether the sum of the proper divisors (od an integer) is greater than the number itself
-	/* Examples:
-	Abudant: 12, 20, 24
-	Not Abudant: 3, 7, 10
-	Please notice: the number has to be bigger than 0.
-	*/
+				for(int i = 0; i < (faceSize + 1) / 2; i++){
+					printf(" ");
+				}
+				printf("%c\n", noseSymbol);
 
-	// Case 4: determine wether a number is a prime.
-	/* Examples:
-	This one brings joy: 3, 5, 11
-	This one does not bring joy: 15, 8, 99
-	Please notice: the number has to be bigger than 0.
-	*/
-    
+				printf("\\");
+				for(int i = 0; i < faceSize; i++){
+					printf("%c", mouseSymbol);
+				}
+				printf("/\n");
+				break;
 
-	// Happy numbers: Print all the happy numbers between 1 to the given number.
-	// Happy number is a number which eventually reaches 1 when replaced by the sum of the square of each digit
-	/* Examples:
-	Happy :) : 7, 10
-	Not Happy :( : 5, 9
-	Please notice: the number has to be bigger than 0.
-	*/
+			case 2:
+				int num;
+				printf("Enter a number:\n");
+				scanf("%d", &num);
+				while(!(num > 0)){
+					printf("Only positive number is allowed, please try again:\n");
+					scanf("%d", &num);
+				}
+				int cupy = num;
+				int numOfDisits = 0;
+				while(cupy != 0){
+					cupy /= 10;
+					numOfDisits++;
+				}
+				int rightSum = 0, leftSum = 0;
+				for(int i = 0; i < numOfDisits; i++){
+					if(i < numOfDisits / 2){
+						rightSum += num % 10;
+					}
+					if(i > numOfDisits / 2 || (i == numOfDisits / 2 && numOfDisits % 2 == 0)){
+						leftSum += num % 10;
+					}
+					num /= 10; 
+				}
+				if(leftSum == rightSum){
+					printf("This number is balanced and brings harmony!\n");
+				}
+				else{
+					printf("This number isn't balanced and destroys harmony.\n");
+				}
+				break;
 
-	// Festival of Laughter: Prints all the numbers between 1 the given number:
-	// and replace with "Smile!" every number that divided by the given smile number
-	// and replace with "Cheer!" every number that divided by the given cheer number
-	// and replace with "Festival!" every number that divided by both of them
-	/* Example:
-	6, smile: 2, cheer: 3 : 1, Smile!, Cheer!, Smile!, 5, Festival!
-	*/
+			case 7:
+				printf("Thank you for your journey through Numeria!\n");
+				isFinish = 1;
+				break;;
+
+			default:
+				printf("This option is not available, please try again.\n");
+				break;
+		}
+	} while(!isFinish);
 	return 0;
 }
