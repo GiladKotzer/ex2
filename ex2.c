@@ -51,28 +51,28 @@ int main(){
 				break;
 
 			case 2:
-				int num;
+				int num1;
 				printf("Enter a number:\n");
-				scanf("%d", &num);
-				while(!(num > 0)){
+				scanf("%d", &num1);
+				while(!(num1 > 0)){
 					printf("Only positive number is allowed, please try again:\n");
-					scanf("%d", &num);
+					scanf("%d", &num1);
 				}
-				int cupy = num;
+				int copy1 = num1;
 				int numOfDisits = 0;
-				while(cupy != 0){
-					cupy /= 10;
+				while(copy1 != 0){
+					copy1 /= 10;
 					numOfDisits++;
 				}
 				int rightSum = 0, leftSum = 0;
 				for(int i = 0; i < numOfDisits; i++){
 					if(i < numOfDisits / 2){
-						rightSum += num % 10;
+						rightSum += num1 % 10;
 					}
 					if(i > numOfDisits / 2 || (i == numOfDisits / 2 && numOfDisits % 2 == 0)){
-						leftSum += num % 10;
+						leftSum += num1 % 10;
 					}
-					num /= 10; 
+					num1 /= 10; 
 				}
 				if(leftSum == rightSum){
 					printf("This number is balanced and brings harmony!\n");
@@ -81,11 +81,102 @@ int main(){
 					printf("This number isn't balanced and destroys harmony.\n");
 				}
 				break;
+			
+			case 3:
+				int num2;
+				printf("Enter a number:\n");
+				scanf("%d", &num2);
+				while(!(num2 > 0)){
+					printf("Only positive number is allowed, please try again:\n");
+					scanf("%d", &num2);
+				}
+				int sum = 0;
+				for(int i = 1; i < num2; i++){
+					if(num2 % i == 0){
+						sum += i;
+					}
+				}
+				if(sum > num2){
+					printf("This number is generous!\n");
+				}
+				else{
+					printf("This number does not share.\n");
+				}
+				break;
+			
+			case 4:
+				int num3;
+				printf("Enter a number:\n");
+				scanf("%d", &num3);
+				while(!(num3 > 0)){
+					printf("Only positive number is allowed, please try again:\n");
+					scanf("%d", &num3);
+				}
+				int copy2 = num3;
+				int num3Reverse = 0;
+				while(copy2 != 0){
+					num3Reverse = num3Reverse * 10 + copy2 % 10;
+					copy2 /= 10;
+				}
+				int isNum3Prime = 1, isNum3ReversePrime = 1;
+				if(num3 == 1){
+					isNum3Prime = 0;
+				}
+				for(int i=2; i < num3; i++){
+					if(num3 % i == 0){
+						isNum3Prime = 0;
+						break;
+					}
+				}
+				for(int i=2; i < num3Reverse; i++){
+					if(num3Reverse % i == 0){
+						isNum3ReversePrime = 0;
+						break;
+					}
+				}
+				if(isNum3Prime && isNum3ReversePrime){
+					printf("This number completes the circle of joy!\n");
+				}
+				else{
+					printf("The circle remains incomplete.\n");
+				}
+				break;
+
+			case 5:
+			int num4;
+			printf("Enter a number:\n");
+			scanf("%d", &num4);
+			while(!(num4 > 0)){
+				printf("Only positive number is allowed, please try again:\n");
+				scanf("%d", &num4);
+			}
+			printf("Between 1 and %d only these numbers bring happiness: ", num4);
+			int newNum, copy3;
+			for(int i = 1; i <= num4; i++){
+				newNum = i;
+				while(!(newNum == 1 || newNum == 4)){
+					copy3 = newNum;
+					newNum = 0;
+					while(copy3 != 0){
+						newNum += (copy3 % 10) * (copy3 % 10);
+						copy3 /= 10;
+					}
+				}
+				if(newNum == 1){
+					printf("%d ", i);
+				}
+			}
+			printf("\n");
+			break;
+
+			case 6:
+				
+				break;
 
 			case 7:
 				printf("Thank you for your journey through Numeria!\n");
 				isFinish = 1;
-				break;;
+				break;
 
 			default:
 				printf("This option is not available, please try again.\n");
