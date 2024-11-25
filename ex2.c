@@ -25,10 +25,10 @@ int main(){
 			case 1:
 				//IO
 				char eyesSymbol, noseSymbol, mouseSymbol;
-				printf("Enter symbols for the eyes, nose, and mouse:\n");
+				printf("Enter symbols for the eyes, nose, and mouth:\n");
 				scanf(" %c %c %c", &eyesSymbol, &noseSymbol, &mouseSymbol);
 				int faceSize;
-				printf("Enter the size of the face:\n");
+				printf("Enter face size:\n");
 				scanf("%d", &faceSize);
 				while(!(faceSize > 0 && faceSize % 2 == 1)){
 					printf("The face's size must be an odd and positive number, please try again:\n");
